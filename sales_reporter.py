@@ -15,8 +15,8 @@ import csv
 import pandas
 import matplotlib.pyplot as plt
 
-#def to_usd(my_price):
-   # return "${0:,.2f}".format(my_price)  # > $12,000.71
+def to_usd(my_price):
+    return "${0:,.2f}".format(my_price)  # > $12,000.71
 
 #
 # INFO INPUTS
@@ -74,3 +74,26 @@ print(f"TOTAL MONTHLY SALES: {to_usd(monthly_total)}")
 print("-----------------------")
 print("TOP SELLING PRODUCTS:")
 
+rank = 1
+for d in top_sellers:
+    print("  " + str(rank) + ") " +
+          d["name"] + ": " + to_usd(d["monthly_sales"]))
+    rank = rank + 1
+
+print("-----------------------")
+print("VISUALIZING THE DATA...")
+
+chart_title = "Top Selling Products (March 2018)"  # TODO: get month and year
+
+sorted_products = []
+sorted_sales = []
+
+for d in top_sellers:
+    sorted_products.append(d["name"])
+    sorted_sales.append(d["monthly_sales"])
+
+plt.bar(sorted_products, sorted_sales)
+plt.title(chart_title)
+plt.xlabel("Product")
+plt.ylabel("Monthly Sales (USD)")
+plt.show()
