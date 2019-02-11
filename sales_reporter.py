@@ -9,7 +9,7 @@
 
 #source adapted from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/pandas_solution_further.py
 
-import operator
+import operator #need this for line 57
 import os   
 import csv
 import pandas
@@ -52,5 +52,25 @@ for product_name in unique_product_names:
     #now adding in product name and monthly sales
     top_sellers.append(
         {"name": product_name, "monthly_sales": product_monthly_sales})
+    #print(top_sellers)
 
-print(top_sellers)
+top_sellers = sorted(top_sellers, key=operator.itemgetter(
+    "monthly_sales"), reverse=True)
+#print(top_sellers)
+
+#
+# OUTPUTS
+#
+
+print("-----------------------")
+print("MONTH: March 2018")  # TODO: get month and year
+
+print("-----------------------")
+print("CRUNCHING THE DATA...")
+
+print("-----------------------")
+print(f"TOTAL MONTHLY SALES: {to_usd(monthly_total)}")
+
+print("-----------------------")
+print("TOP SELLING PRODUCTS:")
+
