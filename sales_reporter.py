@@ -92,6 +92,7 @@ for d in top_sellers:
     sorted_products.append(d["name"])
     sorted_sales.append(d["monthly_sales"])
 
+#format chart
 plt.bar(sorted_products, sorted_sales)
 plt.title(chart_title)
 plt.xlabel("Product")
